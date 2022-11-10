@@ -1,0 +1,13 @@
+const  express =require('express')
+const cors = require('cors')
+require('dotenv').config()
+const port = process.env.PORT
+const app =express()
+require('./mongoose/models/connections')
+const userRoute =require('./routes/UserRoute')
+const Adminroute = require('./routes/adminRoute')
+app.use(cors())
+app.use(express.json())
+app.use('/user', userRoute)
+app.use('/admin', Adminroute)
+app.listen(3000)
